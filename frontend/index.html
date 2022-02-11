@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPA Login Test</title>
+    <link rel="style" href="/css/index.css" />
+</head>
+<body>
+    <nav class="nav">
+        <!-- Enbart en enkel navigering ruta som kommer sitta på vänster sida (CSS Style) -->
+        <a href="/" class="nav__link" data-link>Index.html</a> <!-- A tag med en navlink tillbaka till Home/Dashboard -->
+        <a href="/budget" class="nav__link" data-link>Budget</a>
+        <a href="/dashboard" class="nav__link" data-link>Dashboard</a> <!-- A tag med en navlink för login (Test) -->
+    </nav>
+    <div id="app"></div>
+    <script type="module" src="/static/js/index.js"></script>
+    <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
+    <!-- Fick ett felmeddelande men oklart om denna fortfarande behövs? -->
+</body>
+</html>
+
+<!-- 
+Här har jag installerat node.js med olika nödvändiga packages
+(i terminalen skriv npm init -y (om github är kopplad bör länk till repot dyka upp)
+o sen installerade jag express (i terminalen: npm i express) 
+-->
