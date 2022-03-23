@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+}
+
+.homeClass.GridDiv {
+    text-align: center;
+    background-color: rgba(200, 231, 221, 0.87);
+    border: 2px solid black;
+    margin: 5px;
+}
+
+.homeClass#ItemA {
+    grid-area: main;
+}
+
+.homeClass#ItemB {
+    grid-area: leftSide;
+}
+
+.homeClass#ItemC {
+    grid-area: rightSide;
+}
+
+.homeClass#ItemD {
+    grid-area: footer;
+}
+
+.homeClass#ItemE {
+    grid-area: subHead;
+}
+
+.homeClass#HomeContainer {
+    width: 100vw;
+    background-image: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.homeClass#ContentDiv {
+    display: grid;
+    justify-content: center;
+    margin: 0 auto;
+    width: 70vw;
+    height: auto;
+    grid-template-areas:     
+    "subHead subHead subHead"
+    "leftSide main rightSide"
+    "footer footer footer";
+
+    grid-template-columns: 250px 1fr 250px;
+    grid-template-rows: 100px 500px 150px;
+}
+
+@media screen and (max-width: 1650px) {
+    .homeClass#ContentDiv {
+        min-width: 1155px;
+    }
+}
+
+@media screen and (max-width: 1155px) {
+    .homeClass#ContentDiv {
+        min-width: 100vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .homeClass#ContentDiv {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100px 150px 500px 150px;
+        grid-template-areas: 
+        'subHead    subHead'
+        'leftSide   rightSide' 
+        'main       main'
+        'footer     footer';
+    }
+}
