@@ -10,7 +10,7 @@
 
         body {
             /* background-image: linear-gradient(180deg, rgb(33, 33, 77), rgb(88, 76, 172) 50%, rgb(136, 136, 192)); */
-            background-image: url("pic/backgroundLogin.jpg");
+            background: url("pic/backgroundLogin.jpg")  no-repeat fixed center;
             background-size: cover;
             background-repeat: no-repeat;
             min-height: 100vh;
@@ -22,7 +22,8 @@
 
         .login {
             display: grid;
-            border: solid 2px rgb(33, 33, 77);
+            /* border: solid 2px rgb(33, 33, 77); */
+            border: solid 2px rgb(48, 48, 48);
             margin: 10% auto;
             width: 28.125rem;               /*Denna var tidigare 450px, försöker anpassa för att vara flexibel*/
             height: 26.875rem;              /*Dena var tidigare 430px*/
@@ -31,7 +32,8 @@
             /* align-items: center;            Är denna överflödig?? */
             grid-template-rows: 90px 120px 30px 30px 1fr;
             grid-template-columns: 100px 100px 100px 100px;
-            background-color: rgba(136, 136, 192, 0.8);
+            /* background-color: rgba(136, 136, 192, 0.8); */
+            background-color: rgba(255, 255, 255, 0.445);
             /*background-color: chartreuse;*/    /*Förmodligen världens bästa färg!!*/
         }
 
