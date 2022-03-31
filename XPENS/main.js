@@ -6,6 +6,7 @@ import { render as addexpense } from './addexpense.js'
 import { render as ListAllExpensesInBudgetRender } from './ListAllExpensesInBudget.js'
 import { render as page5Render } from './filters.js'
 import { render as ListAllExpensesInBudgetCatRender } from './ListAllExpensesInBudgetCat.js'
+import { render as ExpensesComponent } from './components/expenses-component.js'
 import { registerChangeListener } from './router.js'
 import { Header } from './header.js'
 
@@ -20,8 +21,8 @@ registerChangeListener((newPage) => {
     case 'home':
       page1Render(app)
       break
-    case 'savingPlan':
-      savingPlanRender(app)
+    case 'Expenses':
+      ExpensesComponent(app)
       break
     case 'checkPlan':
       checkPlanRender(app)

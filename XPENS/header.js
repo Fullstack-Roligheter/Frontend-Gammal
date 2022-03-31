@@ -22,9 +22,9 @@ const changeColor = () => {
 export class Header {
     constructor() {
         registerMenuLi("li1", "home");
-        registerMenuLi("li2", "savingPlan");
+        registerMenuLi("li2", "Expenses");
         registerMenuLi("li3", "checkPlan");
-       registerMenuLi('li8', 'addincome')
+        registerMenuLi('li8', 'addincome')
         registerMenuLi("li4", "addexpense");
         registerMenuLi("li5", "ListAllExpensesInBudget");
         registerMenuLi("li6", "filters");
