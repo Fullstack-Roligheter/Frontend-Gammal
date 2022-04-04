@@ -5,7 +5,17 @@ export const ExpensesBudgetComponent = () => {
     let tempList = [];
     let budgetName = '';
 
-    const body = document.getElementById('app')
+
+    const oldStyleSheet = document.getElementById("lac-style");
+    if (oldStyleSheet) oldStyleSheet.remove();
+  
+    const customStyleSheet = document.createElement("link");
+    customStyleSheet.setAttribute("id", "lac-style");
+    customStyleSheet.setAttribute("rel", "stylesheet");
+    customStyleSheet.setAttribute("href", "lac.css");
+    document.head.appendChild(customStyleSheet)
+    
+    const body = document.getElementById('article')
 
     const GetBudgets = (loggedInUserId) => {
         fetch
@@ -87,32 +97,89 @@ export const ExpensesBudgetComponent = () => {
         const newExpensesContainerEl = document.createElement('div')
         newExpensesContainerEl.setAttribute('id', 'expenses-container')
 
-        const date = new Date();
+        // const date = new Date();
         // newExpensesContainerEl.innerHTML = date.getMilliseconds();
 
         body.appendChild(newExpensesContainerEl)
 
         for (let i = 0; i < data.length; i++) {
 
-            let div1 = document.createElement("div")
-            div1.setAttribute('id', 'Budget-Title')
-            // div1.innerHTML = date.getMilliseconds();
-            div1.innerHTML =
-                'Budget Name : ' + data[i].budgetName + '<br/><br/>' + 'Expenses :' + '<br/>';
+            // let budgetTitle = document.createElement("div")
+            // budgetTitle.setAttribute('id', 'budget-title')
+            // budgetTitle.innerHTML = 'Budget Name : ' + data[i].budgetName;
 
-            newExpensesContainerEl.appendChild(div1);
+            // newExpensesContainerEl.appendChild(budgetTitle);
+
+            let expensesContainerDiv = document.createElement("div");
+            expensesContainerDiv.setAttribute("class", "expense-container");
+            newExpensesContainerEl.appendChild(expensesContainerDiv);
+
+                let expenseRowHeaderDiv = document.createElement("div");
+                expenseRowHeaderDiv.setAttribute("class", "expense-row-header");
+                expensesContainerDiv.appendChild(expenseRowHeaderDiv);
+
+                    let expensesDateHeader = document.createElement("div");
+                    expensesDateHeader.setAttribute("class", "expense-item expense-date");
+                    expensesDateHeader.innerHTML = 'Date'
+                    expenseRowHeaderDiv.appendChild(expensesDateHeader);
+
+                    let expensesRecipientHeader = document.createElement("div");
+                    expensesRecipientHeader.setAttribute("class", "expense-item expense-recipient");
+                    expensesRecipientHeader.innerHTML = 'Recipient'
+                    expenseRowHeaderDiv.appendChild(expensesRecipientHeader);
+
+                    let expensesAmountHeader = document.createElement("div");
+                    expensesAmountHeader.setAttribute("class", "expense-item expense-amount");
+                    expensesAmountHeader.innerHTML = 'Amount';
+                    expenseRowHeaderDiv.appendChild(expensesAmountHeader);
+    
+                    let expensesCommentHeader = document.createElement("div");
+                    expensesCommentHeader.setAttribute("class", "expense-item expense-comment");        
+                    expensesCommentHeader.innerHTML = 'Comment';
+                    expenseRowHeaderDiv.appendChild(expensesCommentHeader);
 
             for (let j = 0; j < data[i].expenses.length; j++) {
-                let div2 = document.createElement("div");
-                div2.setAttribute('class', 'Budget-Item')
-                //div2.innerHTML = date.getMilliseconds();
-                div2.innerHTML =
-                    'Category Name : ' + data[i].expenses[j].categoryName + '<br/>' +
-                    'Amount : ' + data[i].expenses[j].amount + '<br/>' +
-                    'Recipient : ' + data[i].expenses[j].recipient + '<br/>' +
-                    'Date : ' + data[i].expenses[j].date + '<br/>' +
-                    'Comment : ' + data[i].expenses[j].comment + '<br/><br/>';
-                newExpensesContainerEl.appendChild(div2);
+
+                // let categoryNameDiv = document.createElement("div");
+                // categoryNameDiv.setAttribute("class", "category-name");
+                // categoryNameDiv.innerHTML =
+                //   "Category Name : " + data[i].expenses[j].categoryName
+                // newExpensesContainerEl.appendChild(categoryNameDiv);
+
+
+
+
+                
+
+                    let expenseRowDiv = document.createElement("div");
+                    expenseRowDiv.setAttribute("class", "expense-row");
+                    expensesContainerDiv.appendChild(expenseRowDiv);
+
+                        let expensesDate = document.createElement("div");
+                        expensesDate.setAttribute("class", "expense-item expense-date");
+                        expensesDate.innerHTML = data[i].expenses[j].date;
+                        expenseRowDiv.appendChild(expensesDate);
+
+                        let expensesRecipient = document.createElement("div");
+                        expensesRecipient.setAttribute("class", "expense-item expense-recipient");
+                        expensesRecipient.innerHTML = data[i].expenses[j].recipient;
+                        expenseRowDiv.appendChild(expensesRecipient);
+
+                        let expensesAmount = document.createElement("div");
+                        expensesAmount.setAttribute("class", "expense-item expense-amount");
+                        expensesAmount.innerHTML = data[i].expenses[j].amount + ' kr';
+                        expenseRowDiv.appendChild(expensesAmount);
+
+                        let expensesComment = document.createElement("div");
+                        expensesComment.setAttribute("class", "expense-item expense-comment");        
+                        if (!data[i].expenses[j].comment) {
+                          expensesComment.innerHTML = '---';
+                        }
+                        else {
+                          expensesComment.innerHTML = data[i].expenses[j].comment
+                        }
+                        expenseRowDiv.appendChild(expensesComment);
+
             }
         }
     }

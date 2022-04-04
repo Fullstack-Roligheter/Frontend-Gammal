@@ -1,5 +1,5 @@
-
 import { ExpensesBudgetComponent } from './expenses-budget-component.js';
+import { ExpensesSidebarComponent } from './expenses-sidebar-component.js';
 
 export const render = (app) => {
     
@@ -12,16 +12,28 @@ export const render = (app) => {
     customStyleSheet.setAttribute("href", "lac.css");
     document.head.appendChild(customStyleSheet)
 
-    const mainContainer = document.createElement('main');
+    const main = document.createElement('main');
+    main.setAttribute('id', 'main')
+
+    const mainContainer = document.createElement('div');
+        mainContainer.setAttribute('class', 'main-container')
+        mainContainer.setAttribute('id', 'main-container')
+
+    const article = document.createElement('article');
+        article.setAttribute('id', 'article')
+
     const titleContainer = document.createElement('div');
+
     const h1 = document.createElement('h1');
     const text = document.createTextNode('Expenses');
+
     h1.appendChild(text);
     titleContainer.appendChild(h1);
-    mainContainer.appendChild(titleContainer);
-    app.appendChild(mainContainer);
+    article.appendChild(titleContainer)
+    mainContainer.appendChild(article);
+    main.appendChild(mainContainer);
+    app.appendChild(main);
 
-
-    ExpensesBudgetComponent()
+    ExpensesBudgetComponent(mainContainer)
+    ExpensesSidebarComponent(mainContainer)
 }
-
