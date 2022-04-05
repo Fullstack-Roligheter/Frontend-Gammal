@@ -1,5 +1,5 @@
 'use strict';
-export const ExpensesBudgetComponent = () => {
+export const ExpensesBudgetComponent = (target) => {
     let userId = 1;
     let budgetId = '';
     let tempList = [];
@@ -15,7 +15,10 @@ export const ExpensesBudgetComponent = () => {
     customStyleSheet.setAttribute("href", "lac.css");
     document.head.appendChild(customStyleSheet)
     
+    const main = target;
     const body = document.getElementById('article')
+
+    main.appendChild(body);
 
     const GetBudgets = (loggedInUserId) => {
         fetch
